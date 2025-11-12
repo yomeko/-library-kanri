@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form>
+		
+	</form>
 </body>
 </html>
