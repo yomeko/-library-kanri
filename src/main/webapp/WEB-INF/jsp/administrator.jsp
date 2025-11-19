@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/admin.css">
 <title>Insert title here</title>
 </head>
 <body>
 	<h1>登録完了！！</h1>
-	<a></a>
+	
 </body>
 </html>
