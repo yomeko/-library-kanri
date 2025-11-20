@@ -26,7 +26,7 @@
             </form>
         </td>
     </tr>
-
+    
     <tr>
         <td>
             <form action="newAcount" method="post">
