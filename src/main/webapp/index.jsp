@@ -7,6 +7,22 @@
 <title>図書館管理システム</title>
 <link rel="stylesheet" href="CSS/index.css">
 
+<style>
+.button-like {
+    padding: 10px 20px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.button-like:hover {
+    background-color: #2980b9;
+}
+</style>
+
 </head>
 <body>
 
@@ -15,29 +31,29 @@
 <table>
     <tr>
         <td>
-            <form action="Login" method="post">
-            	<input type="submit" value="ログイン" name="Login">
-            </form>
+            <button class="button-like" onclick="location.href='/jsp/Login.jsp'">
+                ログイン
+            </button>
         </td>
 
         <td>
-            <form action="Main" method="post">
-            	<input type="submit" value="一覧" name="itiran">
-            </form>
+            <button class="button-like" onclick="location.href='jsp/main.jsp'">
+                一覧
+            </button>
         </td>
     </tr>
     
     <tr>
         <td>
-            <form action="newAcount" method="post">
-            	<input type="submit" value="新規登録" name="newAcount">
-            </form>
+            <button class="button-like" onclick="location.href='newAcount.jsp'">
+                新規登録
+            </button>
         </td>
 
         <td>
-            <form action="deleteAcount" method="post">
-            	<input type="submit" value="削除" name="deleteAcount">
-            </form>
+            <button class="button-like" onclick="location.href='deleteAcount.jsp'">
+                削除
+            </button>
         </td>
     </tr>
 </table>
