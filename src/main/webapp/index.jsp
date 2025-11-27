@@ -7,22 +7,6 @@
 <title>図書館管理システム</title>
 <link rel="stylesheet" href="CSS/index.css">
 
-<style>
-.button-like {
-    padding: 10px 20px;
-    border: none;
-    background-color: #3498db;
-    color: white;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.button-like:hover {
-    background-color: #2980b9;
-}
-</style>
-
 </head>
 <body>
 
