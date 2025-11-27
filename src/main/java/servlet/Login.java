@@ -2,10 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
-<<<<<<< HEAD
-=======
 import jakarta.servlet.RequestDispatcher;
->>>>>>> branch 'master' of https://github.com/yomeko/-library-kanri.git
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
