@@ -7,36 +7,41 @@
 <title>図書館管理システム</title>
 <link rel="stylesheet" href="CSS/index.css">
 </head>
+
 <body>
 
-<h1>図書管理システム！</h1>
+<h1 style="text-align:center;">図書館管理システム</h1>
 
-<table>
+<table align="center" border="1" cellpadding="20">
     <tr>
-        <td>
-            <button onclick="location.href='Login.jsp'">
-                ログイン
-            </button>
+        <!-- 1行目 左: ログイン -->
+        <td align="center">
+            <form action="Login" method="get">
+                <button type="submit">ログイン</button>
+            </form>
         </td>
 
-        <td>
-            <button onclick="location.href='jsp/main.jsp'">
-                一覧
-            </button>
+        <!-- 1行目 右: 一覧（Mainサーブレット） -->
+        <td align="center">
+            <form action="Main" method="post">
+                <button type="submit">一覧</button>
+            </form>
         </td>
     </tr>
-    
+
     <tr>
-        <td>
-            <button onclick="location.href='newAcount.jsp'">
-                新規登録
-            </button>
+        <!-- 2行目 左: 新規登録 -->
+        <td align="center">
+            <form action="newAcount" method="post">
+                <button type="submit">新規登録</button>
+            </form>
         </td>
 
-        <td>
-            <button onclick="location.href='deleteAcount.jsp'">
-                削除
-            </button>
+        <!-- 2行目 右: 削除 -->
+        <td align="center">
+            <form action="deleteAcount" method="post">
+                <button type="submit">削除</button>
+            </form>
         </td>
     </tr>
 </table>
