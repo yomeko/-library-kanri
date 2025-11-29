@@ -13,35 +13,41 @@ import jakarta.servlet.http.HttpServletResponse;
 public class Login extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    public Login() {
+        super();
+    }
+
     /**
-     * index.jsp から「ログイン」ボタンが押されたとき
-     * 最初に呼ばれるのは doGet()
-     * → ログイン画面（Login.jsp）を表示する役割
+     * index.jsp のログインボタン → GET リクエスト
+     * ログイン画面（Login.jsp）を表示
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Login.jsp（ログイン入力画面）にフォワード
-        RequestDispatcher dispatcher = 
+        RequestDispatcher dispatcher =
                 request.getRequestDispatcher("WEB-INF/jsp/Login.jsp");
         dispatcher.forward(request, response);
     }
 
     /**
-     * Login.jsp のフォームから送信されたとき呼ばれる
-     * → ユーザー名・パスワードを受け取り、認証処理を実行
+     * Login.jsp からの POST
+     * → ユーザー名とパスワードの受け取り
+     * →（本来ならDB認証）
+     * → セッションにログイン情報を保存
+     * → ログイン結果へ
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // フォームデータを取得
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        // 結果をリクエストスコープに保存
+        // ★ログイン成功したことにする（本来はDBで認証）
+        request.getSession().setAttribute("loginUser", username);
+
+        // ログイン結果画面の表示用
         request.setAttribute("username", username);
 
-        // ログイン結果画面にフォワード
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher("WEB-INF/jsp_Result/loginResult.jsp");
         dispatcher.forward(request, response);

@@ -11,22 +11,19 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 図書検索メニューへ遷移するサーブレット
- * index.jsp → /search → main.jsp
+ * index.jsp → /search → 検索画面
  */
 @WebServlet("/search")
 public class search extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 初期処理（特別な初期化が不要なため空のまま）
-     */
     public search() {
         super();
     }
 
     /**
-     * GETリクエスト時（直接アクセスされた場合）
-     * システムとしては POST 遷移を前提とするため、メニュー(main.jsp)へフォワードする。
+     * 直接 GET でアクセスされた場合の処理
+     * 結果画面にフォワード（必要なら変更可）
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,12 +35,23 @@ public class search extends HttpServlet {
     }
 
     /**
-     * index.jsp の検索ボタンクリック（POST）で呼ばれるメソッド
-     * ここでは検索画面（ WEB-INF/search.jsp）に遷移するだけ。
+     * index.jsp の検索ボタン（POST）
+     * → ログインチェック
+     * → ログイン済なら検索画面へ
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        // ★ログインチェック
+        String user = (String) request.getSession().getAttribute("loginUser");
+        if (user == null) {
+            response.sendRedirect("index.jsp");
+            return;
+        }
+
+        // ログイン中ユーザ名を表示したい場合の設定
+        request.setAttribute("loginUser", user);
 
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher("WEB-INF/jsp/search.jsp");

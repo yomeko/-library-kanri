@@ -14,7 +14,7 @@
 <!-- 左半分：検索フォーム -->
 <div class="left">
     <h1>検索</h1>
-
+	<p>ログイン中：${loginUser}</p>
     <!-- 検索フォーム（IDと数量で検索） -->
     <form action="SearchServlet" method="post">
         
