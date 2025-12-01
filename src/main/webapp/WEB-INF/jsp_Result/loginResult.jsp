@@ -10,14 +10,15 @@ User loginUser = (User)session.getAttribute("loginUser");
 <head>
 <meta charset="UTF-8">
 <title>図書館管理システム</title>
+<link rel="stylesheet" href="CSS/index.css">
 </head>
 <body>
-<h1>アカウント消去</h1>
+<h1>ログイン画面</h1>
 <% if (loginUser != null){ %>
-	<p>アカウント消去に成功しました</p>
+	<p>ログインに成功しました</p>
 	<a href="index.jsp">トップへ</a>
 <% } else {%>
-	<p>アカウント消去に失敗しました</p>
+	<p>ログインに失敗しました</p>
 	<a href="index.jsp">トップへ</a>		
 <% } %>
 </body>
