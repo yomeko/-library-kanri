@@ -39,7 +39,7 @@ public class Logout extends HttpServlet {
 		// TODO Auto-generated method stub
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher(
-				"WEB-INF/jsp/logoutResult.jsp");
+				"WEB-INF/jsp_Result/logoutResult.jsp");
 		dispatcher.forward(request,response);
 	}
 
