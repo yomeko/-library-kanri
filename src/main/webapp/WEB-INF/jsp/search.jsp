@@ -16,7 +16,7 @@
     <h1>検索</h1>
 	<p>ログイン中：${loginUser}</p>
     <!-- 検索フォーム（IDと数量で検索） -->
-    <form action="SearchServlet" method="post">
+    <form action="search" method="post">
         
         <!-- ID入力欄 -->
         <div class="form-group">
@@ -35,6 +35,10 @@
             <button type="submit">検索</button>
         </div>
     </form>
+    <br>
+    <from action = "Logout" method = "get">
+    	<button type="submit">ログアウト画面へ遷移</button>
+    </from>
 </div>
 
 <!-- 右半分：DB のデータ一覧を表示 -->

@@ -13,7 +13,7 @@ User loginUser = (User)session.getAttribute("loginUser");
 <title>図書館管理システム</title>
 </head>
 <body>
-<h1>登録画面</h1>
+<h1>管理画面</h1>
 <% if (loginUser != null){ %>
 	<p>登録に成功しました</p>
 	<a href="index.jsp">トップへ</a>

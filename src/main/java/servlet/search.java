@@ -44,12 +44,13 @@ public class search extends HttpServlet {
             throws ServletException, IOException {
 
         // ★ログインチェック
+    	
         String user = (String) request.getSession().getAttribute("loginUser");
         if (user == null) {
             response.sendRedirect("index.jsp");
             return;
         }
-
+		
         // ログイン中ユーザ名を表示したい場合の設定
         request.setAttribute("loginUser", user);
 
