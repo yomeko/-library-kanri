@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン用</title>
+<title>ログアウト用</title>
 </head>
 <body>
 
-<h1>ログイン</h1>
+<h1>ログアウト</h1>
 
 <!-- Login.java に渡す -->
 <form action="Logout" method="post">

@@ -21,7 +21,7 @@
             </form>
         </td>
 
-        <!-- 1行目 右: 一覧（Mainサーブレット） -->
+        <!-- 1行目 右: 一覧（searchサーブレット） -->
         <td align="center">
             <form action=" search" method="post">
                 <button type="submit">一覧</button>
