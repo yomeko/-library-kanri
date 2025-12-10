@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ログアウト用</title>
+<link rel="stylesheet" href="CSS/index.css">
 </head>
 <body>
 
