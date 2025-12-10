@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="CSS/admin.css">
+    <link rel="stylesheet" href="CSS/index.css">
+    
     <meta charset="UTF-8">
     <title>管理画面</title>
 </head>
@@ -18,7 +19,13 @@
 		<input type = "submit" value = "登録">
 	</form>
 
+	<h1>会員情報判定</h1>
+		<>
 	
-	<br> <a href="index.jsp">戻る</a>
+	
+	<h1>本の貸出判定</h1>
+		
+	
+	
 </body>
 </html>
