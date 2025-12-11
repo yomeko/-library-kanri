@@ -18,7 +18,7 @@ public class deleteAcountDAO {
 			throw new IllegalStateException("JDBCドライバが読み込めませんでした");
 		}
 		try (Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)){
-			String sql = "DELETE FROM MEMBER WHERE NAME=? AND PASS=?";
+			String sql = "DELETE FROM USER WHERE NAME=? AND PASS=?";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
@@ -27,10 +27,12 @@ public class deleteAcountDAO {
 			
 			int result = pStmt.executeUpdate();
 			if(result != 1) {
+				System.out.println("死ねどす");
 				return false;
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("何をされてる方なの？");
 			return false;
 		}
 		return true;
