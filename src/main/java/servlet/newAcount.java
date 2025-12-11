@@ -55,7 +55,7 @@ public class newAcount extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("loginUser", user);
             
-            System.out.println(user);
+            System.out.println(user + "newAcount.java");
             System.out.println(name + pass);
          }
 

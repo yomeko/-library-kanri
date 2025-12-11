@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +17,11 @@
 		<button type="submit">本登録</button>
 	</form>
 
-    <form action="admin_book_servlet" method="get">
+    <form action="admin_menber_servlet" method="get">
         <button type="submit">会員情報判定</button>
     </form>
 
-    <form action="admin_book_servlet" method="get">
+    <form action="admin_book_lend_servlet" method="get">
         <button type="submit">本の貸出判定</button>
     </form>
 </div>

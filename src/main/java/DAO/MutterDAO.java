@@ -23,7 +23,7 @@ public class MutterDAO {
         List<Mutter> mutterList = new ArrayList<>();
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("JDBCドライバ読み込み失敗");
         }

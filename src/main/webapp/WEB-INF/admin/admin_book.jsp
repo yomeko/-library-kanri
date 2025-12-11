@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="CSS/index.css">
+<title>本登録</title>
 </head>
 <body>
-
+<h1>本の登録！！</h1>
 </body>
 </html>
