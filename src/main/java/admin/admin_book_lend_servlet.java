@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class admin_book_servlet
  */
-@WebServlet("/admin_book_servlet")
+@WebServlet("/admin_book_lend_servlet")
 public class admin_book_lend_servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
