@@ -11,10 +11,12 @@
 	
 	<h1>アカウント削除</h1>
 	
+<!--  deleteAcount.javaに渡す -->
 	<form action="deleteAcount" method="post">
-	ユーザー名 : <input type="text" name="name"><br>
-	パスワード : <input type="password" name="pass"><br>
-	<input type="submit" value="削除">
-	<a href = "index.jsp">戻る</a>
+		ユーザー名 : <input type="text" name="name"><br>
+		パスワード : <input type="password" name="pass"><br>
+		<input type="submit" value="削除">
+		<a href="index.jsp">戻る</a>
+	</form>
 </body>
 </html>
