@@ -38,9 +38,23 @@ public class admin_book_servlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+
+	    request.setCharacterEncoding("UTF-8");
+
+	    // JSP の name と一致
+	    String bookName = request.getParameter("bookName");
+	    int number = Integer.parseInt(request.getParameter("number"));
+
+	    // DB登録処理（例）
+	    adminDAO dao = new adminDAO();
+	    dao.insert(bookName, number);
+
+	    // 完了画面へ遷移
+	    request.setAttribute("message", "本を登録しました！");
+	    request.getRequestDispatcher("/admin_book_result.jsp").forward(request, response);
 	}
+
 
 }
