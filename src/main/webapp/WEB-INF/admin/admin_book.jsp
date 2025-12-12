@@ -9,6 +9,19 @@
 </head>
 <body>
 <h1>本の登録！！</h1>
+	<form action="admin_book_servlet" method="post">
+	<table>
+    <tr>
+        <th>本のタイトル :</th>
+        <th><input type="text" name="bookName"></th>
+    </tr>
+	<tr>
+        <th>数量 : </th>
+        <th><input type="number" name="number"></th>
+    </tr>
+    </table>
+	<input type="submit" value="新規登録">
+	<a href = "index.jsp">戻る</a>
 <!-- 条件　本の名前　本の数　を出すこと　memberのコードをまねてでもいいので作って -->
 </body>
 </html>
