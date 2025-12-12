@@ -14,6 +14,7 @@ public class adminDAO {
     private final String DB_PASS = "";
 
     // INSERT処理
+    //本登録
     public boolean insert(Mutter mutter) {
     	String sql = "INSERT INTO list (book, number) VALUES (?, ?)";
         try {
@@ -27,7 +28,6 @@ public class adminDAO {
         	
         	
         	
-            
             pstmt.setString(1, mutter.getBook());
             pstmt.setInt(2, mutter.getNumber());
 
@@ -39,4 +39,6 @@ public class adminDAO {
             return false;
         }
     }
+    
+    //会員情報
 }

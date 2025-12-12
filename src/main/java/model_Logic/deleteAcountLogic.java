@@ -1,10 +1,11 @@
 package model_Logic;
 
+import DAO.deleteAcountDAO;
 import model.User;
 
 public class deleteAcountLogic {
-	public boolean deletem(User user) {
-		//削除処理（実際の削除処理は行わない）
-		return true;
+	public boolean delete(User user) {
+		deleteAcountDAO dao = new deleteAcountDAO();
+		return dao.deletem(user);
 	}
 }

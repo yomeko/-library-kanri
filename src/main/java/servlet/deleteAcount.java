@@ -8,6 +8,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import model.User;
+import model_Logic.deleteAcountLogic;
 
 @WebServlet("/deleteAcount")
 public class deleteAcount extends HttpServlet {
@@ -35,15 +39,30 @@ public class deleteAcount extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         String name = request.getParameter("name"); // 削除するユーザー名
+        String pass = request.getParameter("pass");
+        
+        User user = new User(name, pass);
+        
+        deleteAcountLogic deleteAcountLogic = new deleteAcountLogic();
+        boolean isDelete = deleteAcountLogic.delete(user);
+        
+        if (isDelete) {
+        	HttpSession session = request.getSession();
+        	session.setAttribute("loginUser", user);
+        	
+        	System.out.println(user);
+            System.out.println(name + pass);
+        }
+        
+        request.setAttribute("isDelete", isDelete);
+        request.setAttribute("user", user);
 
         // 実際に削除するなら DAO をここで呼ぶ
         // UserDAO dao = new UserDAO();
         // dao.delete(name);
 
-        request.setAttribute("name", name);
-
         RequestDispatcher dispatcher =
-                request.getRequestDispatcher("/WEB-INF/jsp/deleteAcountResult.jsp");
+                request.getRequestDispatcher("/WEB-INF/jsp_Result/deleteAcountResult.jsp");
         dispatcher.forward(request, response);
     }
 }

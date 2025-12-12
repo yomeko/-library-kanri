@@ -28,7 +28,8 @@ public class newAcountDAO {
             pStmt.setString(1, user.getName());
             pStmt.setString(2, user.getPass());
             
-            System.out.println(user.getName());
+            System.out.println(user.getName() + " newAcountDAO.java");
+            System.out.println(user.getPass() + " newAcountDAO.java");
             
             int result = pStmt.executeUpdate();
             if (result != 1) {

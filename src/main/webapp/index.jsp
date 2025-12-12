@@ -18,9 +18,14 @@
     <form action="Login" method="get">
         <button type="submit">ログイン</button>
     </form>
+<<<<<<< HEAD
     
 	<!-- 本の一覧画面(search.jsp)に移動 -->
     <form action="search" method="post">
+=======
+
+    <form action="search" method="get">
+>>>>>>> bc50a6d50d5b88810bce309b0222d9aa7ba07963
         <button type="submit">一覧</button>
     </form>
 

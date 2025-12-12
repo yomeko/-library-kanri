@@ -36,6 +36,7 @@
         </div>
     </form>
     <br>
+    <!-- ログアウト画面に遷移 -->
     <from action = "Logout" method = "get">
     	<button type="submit">ログアウト画面へ遷移</button>
     </from>
@@ -55,15 +56,14 @@
         
         <%-- サーブレットでセットされた List<Mutter> を表示する処理。 --%>
         
-        <%-- 
+
         
         List<Mutter> list = (List<Mutter>) request.getAttribute("list");
             for (Mutter m : list) {
-        --%>
         
         <%-- 実際のループ例（コメント解除して使用） --%>
         
-        <%--
+
         List<Mutter> list = (List<Mutter>) request.getAttribute("list");
         if(list != null){
             for (Mutter m : list) {
@@ -74,7 +74,7 @@
                 </tr>
             }
         }
-        --%>
+
     </table>
 
 </div>

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -8,6 +9,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import model.Mutter;
+import model_Logic.GetMutterListLogic;
 
 /**
  * 図書検索メニューへ遷移するサーブレット
@@ -30,7 +34,7 @@ public class search extends HttpServlet {
             throws ServletException, IOException {
 
         RequestDispatcher dispatcher =
-                request.getRequestDispatcher("jsp_Result/searchResult.jsp");
+                request.getRequestDispatcher("WEB-INF/jsp/search.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -50,12 +54,17 @@ public class search extends HttpServlet {
             response.sendRedirect("index.jsp");
             return;
         }
-		
+    	
+     // 図書一覧を取得
+        GetMutterListLogic getMutterListLogic = new GetMutterListLogic();
+        List<Mutter> mutterList = getMutterListLogic.execute();
+        request.setAttribute("list", mutterList);
+    	
         // ログイン中ユーザ名を表示したい場合の設定
         request.setAttribute("loginUser", user);
 
         RequestDispatcher dispatcher =
-                request.getRequestDispatcher("WEB-INF/jsp/search.jsp");
+                request.getRequestDispatcher("WEB-INF/jsp/searchResult.jsp");
         dispatcher.forward(request, response);
     }
 }

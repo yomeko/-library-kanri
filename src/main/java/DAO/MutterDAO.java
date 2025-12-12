@@ -23,7 +23,7 @@ public class MutterDAO {
         List<Mutter> mutterList = new ArrayList<>();
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("JDBCドライバ読み込み失敗");
         }
@@ -82,13 +82,17 @@ public class MutterDAO {
     // user テーブルのログイン認証
     // --------------------------------------------------
     public boolean checkUser(User user) {
+    	
+    	System.out.println("渡されたユーザー名: " + user.getName());
+    	System.out.println("渡されたパスワード: " + user.getPass());
+    	
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("JDBCドライバ読み込み失敗");
         }
 
-        String sql = "SELECT id FROM user WHERE name = ? AND pass = ?";
+        String sql = "SELECT id FROM `user` WHERE name = ? AND pass = ?";
 
         try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
