@@ -11,6 +11,8 @@
 </head>
 <body>
 
+<h1>図書館管理者画面</h1>
+
 <div class="menu-container">
 
 	<form action="admin_book_servlet" method="get">
