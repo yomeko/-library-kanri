@@ -71,12 +71,11 @@
 <%
     while (rs.next()) {
         String nameVal = rs.getString("name");
-        // パスワードは伏字10文字で固定表示
-        String masked = "**********";  // 10文字固定
+        String nameVal1 = rs.getString("pass");
 %>
     <tr>
         <td><%= nameVal %></td>
-        <td><%= masked %></td>
+        <td><%= nameVal1 %></td>
     </tr>
 <%
     }
