@@ -9,52 +9,42 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class admin_book_servlet
- */
+import model.Mutter;
+
 @WebServlet("/admin_book_servlet")
 public class admin_book_servlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public admin_book_servlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    private static final long serialVersionUID = 1L;
+
+    // 登録画面表示
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher("/WEB-INF/admin/admin_book.jsp");
+        dispatcher.forward(request, response);
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher dispatcher =
-                request.getRequestDispatcher("WEB-INF/admin/admin_book.jsp");
-        dispatcher.forward(request, response);
-	}
+    // 登録処理
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	        throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
 
-	    request.setCharacterEncoding("UTF-8");
+        String bookName = request.getParameter("bookName");
+        int number = Integer.parseInt(request.getParameter("number"));
 
-	    // JSP の name と一致
-	    String bookName = request.getParameter("bookName");
-	    int number = Integer.parseInt(request.getParameter("number"));
+        Mutter mutter = new Mutter(number, bookName);
+        adminDAO dao = new adminDAO();
 
-	    // DB登録処理（例）
-	    adminDAO dao = new adminDAO();
-	    dao.insert(bookName, number);
+        boolean result = dao.insert(mutter);
 
-	    // 完了画面へ遷移
-	    request.setAttribute("message", "本を登録しました！");
-	    request.getRequestDispatcher("/admin_book_result.jsp").forward(request, response);
-	}
+        request.setAttribute("message",
+                result ? "本を登録しました" : "登録に失敗しました");
 
-
+        request.getRequestDispatcher(
+                "/WEB-INF/admin/admin_book_result.jsp")
+                .forward(request, response);
+    }
 }

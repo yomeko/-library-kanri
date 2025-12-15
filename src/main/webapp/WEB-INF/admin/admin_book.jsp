@@ -21,7 +21,7 @@
     </tr>
     </table>
 	<input type="submit" value="新規登録">
-	<a href = "index.jsp">戻る</a>
+<a href = "administrator.jsp">戻る</a>
 <!-- 条件　本の名前　本の数　を出すこと　memberのコードをまねてでもいいので作って -->
 </body>
 </html>

@@ -14,7 +14,7 @@ User loginUser = (User)session.getAttribute("loginUser");
 </head>
 <body>
 <h1>ログアウト画面</h1>
-<% if (loginUser != null){ %>
+<% if (loginUser == null){ %>
 	<p>ログアウトに成功しました</p>
 	<a href="index.jsp">トップへ</a>
 <% } else {%>

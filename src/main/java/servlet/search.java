@@ -10,61 +10,49 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import model.Mutter;
-import model_Logic.GetMutterListLogic;
+import DAO.BookDAO;
+import model.Book;
 
 /**
- * 図書検索メニューへ遷移するサーブレット
- * index.jsp → /search → 検索画面
+ * 検索画面用Servlet
  */
 @WebServlet("/search")
 public class search extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	// doGet：初期表示（全件）
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
 
-    public search() {
-        super();
-    }
+	    BookDAO dao = new BookDAO();
+	    List<Book> bookList = dao.findAll();
 
-    /**
-     * 直接 GET でアクセスされた場合の処理
-     * 結果画面にフォワード（必要なら変更可）
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+	    request.setAttribute("bookList", bookList);
+	    request.setAttribute("mode", "all"); // ★初期表示フラグ
 
-        RequestDispatcher dispatcher =
-                request.getRequestDispatcher("WEB-INF/jsp/search.jsp");
-        dispatcher.forward(request, response);
-    }
+	    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/search.jsp");
+	    rd.forward(request, response);
+	}
 
-    /**
-     * index.jsp の検索ボタン（POST）
-     * → ログインチェック
-     * → ログイン済なら検索画面へ
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+	// doPost：検索結果表示
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
 
-        // ★ログインチェック
-    	
-        String user = (String) request.getSession().getAttribute("loginUser");
-        if (user == null) {
-            response.sendRedirect("index.jsp");
-            return;
-        }
-    	
-     // 図書一覧を取得
-        GetMutterListLogic getMutterListLogic = new GetMutterListLogic();
-        List<Mutter> mutterList = getMutterListLogic.execute();
-        request.setAttribute("list", mutterList);
-    	
-        // ログイン中ユーザ名を表示したい場合の設定
-        request.setAttribute("loginUser", user);
+	    request.setCharacterEncoding("UTF-8");
 
-        RequestDispatcher dispatcher =
-                request.getRequestDispatcher("WEB-INF/jsp/searchResult.jsp");
-        dispatcher.forward(request, response);
-    }
+	    String keyword = request.getParameter("keyword");
+
+	    BookDAO dao = new BookDAO();
+	    List<Book> bookList = dao.searchByName(keyword);
+
+	    request.setAttribute("bookList", bookList);
+	    request.setAttribute("mode", "search"); // ★検索フラグ
+	    
+	    System.out.println("取得件数：" + bookList.size());
+	    
+	    request.setAttribute("keyword", keyword); // 表示用（任意）
+
+	    RequestDispatcher rd = request.getRequestDispatcher("/search.jsp");
+	    rd.forward(request, response);
+	}
 }

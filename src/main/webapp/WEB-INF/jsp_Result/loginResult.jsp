@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.User"%>
+<%@ page import="model.User" %>
+<%@ page import="model.User" %>
 <%
-    // セッションスコープからユーザー名（String）を取得
-    String loginUser = (String)session.getAttribute("loginUser");
+    User loginUser = (User)session.getAttribute("loginUser");
+
+    // Userオブジェクトから名前を取り出す
+    String userName = loginUser.getName();
 %>
 
 <!DOCTYPE html>
