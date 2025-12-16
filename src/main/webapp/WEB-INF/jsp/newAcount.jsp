@@ -11,10 +11,12 @@
 	
 	<h1>新規登録</h1>
 	
+<!-- newAcount.javaに渡す -->
 	<form action="newAcount" method="post">
-	ユーザー名 : <input type="text" name="name"><br>
-	パスワード : <input type="password" name="pass"><br>
-	<input type="submit" value="新規登録">
-	<a href = "index.jsp">戻る</a>
+		ユーザー名 : <input type="text" name="name"><br>
+		パスワード : <input type="password" name="pass"><br>
+		<input type="submit" value="新規登録">
+		<a href="index.jsp">戻る</a>
+	</form>
 </body>
 </html>

@@ -11,16 +11,12 @@
 
 <h1>ログアウト</h1>
 
-<!-- Login.java に渡す -->
-<form action="Logout" method="post">
-    ユーザ名：<input type="text" name="name" required><br><br>
-    パスワード：<input type="password" name="pass" required><br><br>
-    <input type="submit" value="ログイン">
-</form>
-
-<br>
-
-<a href="index.jsp">戻る</a>
-
+<!-- Logout.java に渡す -->
+	<form action="Logout" method="post">
+    	ユーザ名：<input type="text" name="name" required><br>
+    	パスワード：<input type="password" name="pass" required><br>
+    	<input type="submit" value="ログイン">
+    	<a href="index.jsp">戻る</a>
+	</form>
 </body>
 </html>
