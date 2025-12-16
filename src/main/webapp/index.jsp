@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="model.User" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,20 @@
 <body>
 
 <h1>図書館管理システム</h1>
-<p>ログイン中：${loginUser}</p>
+
+<!-- ログインユーザー表示 -->
+<p>
+ログイン中：
+<%
+    User user = (User) session.getAttribute("loginUser");
+    if (user != null) {
+        out.print(user.getName()); // 名前だけ表示
+    } else {
+        out.print("未ログイン");
+    }
+%>
+</p>
+
 <div class="menu-container">
 
 	<!-- ログイン画面(Login.jsp)に移動 -->
@@ -32,9 +48,15 @@
 	<!-- 削除画面(deleteAcount.jsp)に移動 -->
     <form action="deleteAcount" method="get">
         <button type="submit">削除</button>
+    <form action="Logout" method="post">
+        <button type="submit">ログアウト</button>
     </form>
 
 </div>
+
+<form action="deleteAcount" method="get" class="delete-floating">
+    <button type="submit">アカウント削除</button>
+</form>
 
 </body>
 </html>

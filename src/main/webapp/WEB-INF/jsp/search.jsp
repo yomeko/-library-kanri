@@ -1,82 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="model.Book" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>図書管理システム</title>
-
-<!-- 外部CSSを読み込む -->
-<link rel="stylesheet" href="CSS/search.css">
+<title>図書検索</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/search.css">
 </head>
+
 <body>
 
-<!-- 左半分：検索フォーム -->
-<div class="left">
-    <h1>検索</h1>
-	<p>ログイン中：${loginUser}</p>
-    <!-- 検索フォーム（IDと数量で検索） -->
-    <form action="search" method="post">
-        
-        <!-- ID入力欄 -->
-        <div class="form-group">
-            <label>ID：</label><br>
-            <input type="text" name="id">
+<%
+    String mode = (String) request.getAttribute("mode");
+    String keyword = (String) request.getAttribute("keyword");
+    if (keyword == null) keyword = "";
+%>
+
+<div class="wrapper">
+    <div class="container">
+
+        <!-- 左側：検索ボックス（常に表示） -->
+        <div class="left">
+            <h2>検索</h2>
+            <form action="<%= request.getContextPath() %>/search" method="post">
+                <label>書籍名</label>
+                <input type="text" name="keyword" value="<%= keyword %>">
+                <input type="submit" value="検索">
+            </form>
         </div>
 
-        <!-- 数量入力欄 -->
-        <div class="form-group">
-            <label>数量：</label><br>
-            <input type="text" name="number">
-        </div>
+        <!-- 右側：全件 or 検索結果 -->
+        <div class="right">
+            <h2>
+                <%= "search".equals(mode)
+                        ? "検索結果（「" + keyword + "」）"
+                        : "全件表示" %>
+            </h2>
 
-        <!-- 検索ボタン -->
-        <div class="form-group">
-            <button type="submit">検索</button>
-        </div>
-    </form>
-    <br>
-    <!-- ログアウト画面に遷移 -->
-    <from action = "Logout" method = "get">
-    	<button type="submit">ログアウト画面へ遷移</button>
-    </from>
-</div>
-
-<!-- 右半分：DB のデータ一覧を表示 -->
-<div class="right">
-    <h1>DB一覧</h1>
-
-    <!-- DBのテーブルを表示する領域 -->
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>数量</th>
-            <th>書籍名</th>
-        </tr>
-        
-        <%-- サーブレットでセットされた List<Mutter> を表示する処理。 --%>
-        
-
-        
-        List<Mutter> list = (List<Mutter>) request.getAttribute("list");
-            for (Mutter m : list) {
-        
-        <%-- 実際のループ例（コメント解除して使用） --%>
-        
-
-        List<Mutter> list = (List<Mutter>) request.getAttribute("list");
-        if(list != null){
-            for (Mutter m : list) {
+            <table>
                 <tr>
-                    <td><%= m.getId() %></td>
-                    <td><%= m.getNumber() %></td>
-                    <td><%= m.getBook() %></td>
+                    <th>書籍名</th>
+                    <th>冊数</th>
                 </tr>
-            }
-        }
 
-    </table>
+                <%
+                    List<Book> bookList =
+                        (List<Book>) request.getAttribute("bookList");
 
+                    if (bookList != null && !bookList.isEmpty()) {
+                        for (Book book : bookList) {
+                %>
+                <tr>
+                    <td><%= book.getName() %></td>
+                    <td><%= book.getNumber() %></td>
+                </tr>
+                <%
+                        }
+                    } else {
+                %>
+                <tr>
+                    <td colspan="2" class="no-data">
+                        該当する書籍はありません
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+            </table>
+        </div>
+
+    </div>
 </div>
 
 </body>

@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import model.User;
 import model_Logic.LoginLogic;
 
@@ -57,8 +58,8 @@ public class Login extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("loginUser", luser);
             
-            System.out.println(luser);
-            System.out.println(password);
+            System.out.println(luser + " lougin.java dopost");
+            System.out.println(password + " lougin.java dopost");
          }
 
 
