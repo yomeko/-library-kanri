@@ -45,9 +45,7 @@
         <button type="submit">新規登録</button>
     </form>
 
-	<!-- 削除画面(deleteAcount.jsp)に移動 -->
-    <form action="deleteAcount" method="get">
-        <button type="submit">削除</button>
+	<!-- ログアウト画面(Logout.jsp)に移動 -->
     <form action="Logout" method="post">
         <button type="submit">ログアウト</button>
     </form>
